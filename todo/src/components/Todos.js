@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { addTodo } from '../actions';
+
 class Todos extends React.Component {
   state = {
-    newTodo: ''
+    newTodo: '',
+    completed: false
   };
 
   handleChanges = e => {
@@ -28,10 +31,16 @@ class Todos extends React.Component {
           type='text'
           placeholder='New Todo'
           onChange={this.handleChanges}
-          value={this.state.noTodo}
+          value={this.state.newTodo}
           name='newTodo'
         />
-        <button>Submit</button>
+        <button
+          onClick={() =>
+            this.props.addTodo({ value: this.state.newTodo, completed: false })
+          }
+        >
+          Submit
+        </button>
       </div>
     );
   }
@@ -45,5 +54,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  { addTodo }
 )(Todos);
