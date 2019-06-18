@@ -9,8 +9,9 @@ export const addTodo = newTodo => {
   };
 };
 
-export const markCompleted = id => {
+export const markCompleted = index => {
   return {
-    type: MARK_COMPLETED
+    type: MARK_COMPLETED,
+    payload: index
   };
 };

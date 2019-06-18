@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addTodo } from '../actions';
+import { addTodo, markCompleted } from '../actions';
 
 class Todos extends React.Component {
   state = {
-    newTodo: '',
-    completed: false
+    newTodo: ''
   };
 
   handleChanges = e => {
@@ -15,15 +14,28 @@ class Todos extends React.Component {
     });
   };
 
+  addTodo = e => {
+    e.preventDefault();
+    this.props.addTodo({ value: this.state.newTodo, completed: false });
+    this.setState({ newTodo: '' });
+  };
+
+  markCompleted = (e, index) => {
+    e.preventDefault();
+    this.props.markCompleted(index);
+  };
+
   render() {
     return (
       <div>
-        {this.props.todos.map(todo => {
+        {this.props.todos.map((todo, index) => {
           return (
-            <div>
-              <div className='todo-wrapper'>
-                <h3>{todo.value}</h3>
-              </div>
+            <div
+              className={`todo-wrapper ${todo.completed ? 'completed' : ''}`}
+              onClick={e => this.markCompleted(e, index)}
+              key={index}
+            >
+              <h3>{todo.value}</h3>
             </div>
           );
         })}
@@ -34,13 +46,7 @@ class Todos extends React.Component {
           value={this.state.newTodo}
           name='newTodo'
         />
-        <button
-          onClick={() =>
-            this.props.addTodo({ value: this.state.newTodo, completed: false })
-          }
-        >
-          Submit
-        </button>
+        <button onClick={this.addTodo}>Submit</button>
       </div>
     );
   }
@@ -54,5 +60,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addTodo }
+  { addTodo, markCompleted }
 )(Todos);
