@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { addTodo, markCompleted } from '../actions';
 
+import './todos.scss';
+
 class Todos extends React.Component {
   state = {
     newTodo: ''
@@ -27,11 +29,11 @@ class Todos extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='todo-wrapper'>
         {this.props.todos.map((todo, index) => {
           return (
             <div
-              className={`todo-wrapper ${todo.completed ? 'completed' : ''}`}
+              className={`todo-item ${todo.completed ? 'completed' : ''}`}
               onClick={e => this.markCompleted(e, index)}
               key={index}
             >
