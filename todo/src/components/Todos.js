@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addTodo, markCompleted } from '../actions';
+import { addTodo, markCompleted, deleteTodo } from '../actions';
 
 import './todos.scss';
 
@@ -26,6 +26,10 @@ class Todos extends React.Component {
     e.preventDefault();
     this.props.markCompleted(index);
   };
+  deleteTodo = (e, index) => {
+    e.preventDefault();
+    this.props.deleteTodo(index);
+  };
 
   render() {
     return (
@@ -38,6 +42,7 @@ class Todos extends React.Component {
               key={index}
             >
               <h3>{todo.value}</h3>
+              <button onClick={e => this.deleteTodo(e, index)}>X</button>
             </div>
           );
         })}
@@ -62,5 +67,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addTodo, markCompleted }
+  { addTodo, markCompleted, deleteTodo }
 )(Todos);

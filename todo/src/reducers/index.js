@@ -1,4 +1,4 @@
-import { ADD_TODO, MARK_COMPLETED } from '../actions';
+import { ADD_TODO, MARK_COMPLETED, DELETE_TODO } from '../actions';
 
 const initialState = {
   todos: [
@@ -37,6 +37,11 @@ export const todo = (state = initialState, action) => {
             return todo;
           }
         })
+      };
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter((todo, index) => index !== action.payload)
       };
     default:
       return state;

@@ -5,25 +5,6 @@
   }
 }
 
-.todo-form {
-  form {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    input {
-      margin: 10px 100px;
-      width: 100%;
-    }
-    button {
-      width: 40%;
-      height: 50px;
-      background: #3c6eab;
-      font-size: 20px;
-      color: #ffc35a;
-    }
-  }
-}
-
 .todo-wrapper {
   width: 100%;
   display: flex;
