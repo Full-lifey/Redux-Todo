@@ -24,6 +24,20 @@ export const todo = (state = initialState, action) => {
         ...state,
         todos: [...state.todos, action.payload]
       };
+    case MARK_COMPLETED:
+      return {
+        ...state,
+        todos: state.todos.map((todo, index) => {
+          if (action.payload === index) {
+            return {
+              ...todo,
+              completed: !todo.completed
+            };
+          } else {
+            return todo;
+          }
+        })
+      };
     default:
       return state;
   }
