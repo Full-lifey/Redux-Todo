@@ -6,7 +6,7 @@ import Todos from './components/Todos';
 function App() {
   return (
     <div className='App'>
-      <h1>Todos baby!</h1>
+      <h1>To Do Today</h1>
       <Todos />
     </div>
   );

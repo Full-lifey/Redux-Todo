@@ -41,8 +41,8 @@ class Todos extends React.Component {
               onClick={e => this.markCompleted(e, index)}
               key={index}
             >
-              <h3>{todo.value}</h3>
-              <button onClick={e => this.deleteTodo(e, index)}>X</button>
+              <h2>{todo.value}</h2>
+              <button onClick={e => this.deleteTodo(e, index)}>Delete</button>
             </div>
           );
         })}
