@@ -1,6 +1,6 @@
 # React Redux Todo
 
-**[NETLIFY DEPLOYMENT]('https://joel-perez-redux-todo.netlify.com/')
+**[NETLIFY DEPLOYMENT](https://joel-perez-redux-todo.netlify.com/)
 
 ## Application Coverage
 
